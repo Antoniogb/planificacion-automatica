@@ -12,6 +12,6 @@
 				  [132, 305], [91, 308]],
 	"algorithm": "A*",
 	"heuristic": "naive",
-	"start": [18, 19],
-	"goal": [12, 12]
+	"start": [27, 19],
+	"goal": [8, 20]
 }
