@@ -139,11 +139,11 @@ def lineOfSight(s, sP, grid):
         while x0 != x1:
             f = f + dy
             if f >= dx:
-                if grid(x0 + ((sx -1)/2), y0 + ((sx -1)/2)):
+                if grid(x0 + ((sx -1)/2), y0 + ((sy -1)/2)):
                     return False
                 y0 = y0 + sy
                 f = f - dx
-            if f !=0 and grid(x0 + ((sx -1)/2), y0 + ((sx -1)/2)):
+            if f !=0 and grid(x0 + ((sx -1)/2), y0 + ((sy -1)/2)):
                 return False
             if dy == 0 and grid(x0 + ((sx -1)/2), y0) and grid(x0 + ((sx -1)/2), y0 - 1):
                 return False
@@ -152,9 +152,13 @@ def lineOfSight(s, sP, grid):
         while y0 != y1:
             f = f + dx
             if f >= dy:
-                if grid(x0 + ((sx -1)/2), y0 + ((sx -1)/2)):
+                if grid(x0 + ((sx -1)/2), y0 + ((sy -1)/2)):
                     return False
-                x
+                x0 = x0 + sx
+                f = f - dy
+            if f != 0 and grid(x0 + ((sx -1)/2), y0 + ((sy -1)/2)):
+                return False
+            if dx == 0 and grid(x0, y0 + ((sy - 1)/2)) and grid(x0 - 1, y0 + ((sy - 1)/2)):
 
 
 
