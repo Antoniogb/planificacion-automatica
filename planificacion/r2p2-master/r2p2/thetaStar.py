@@ -94,6 +94,14 @@ def thetaStar(start, goal, grid, heur='naive'):
                 continue
             #Otherwise if it is already in the open set
             if node in openset:
+                ###########################
+                if lineOfSight(current,node,grid):
+                    #path 2
+                    new_g = current.parent.G + current.move_cost(node)
+                    if (current.parent.G + new_g) < node.G:
+                        node.G = current.parent.G + new_g
+                        node.parent = current.parent
+                ###########################
                 #Check if we beat the G score 
                 new_g = current.G + current.move_cost(node)
                 if node.G > new_g:
@@ -159,7 +167,9 @@ def lineOfSight(s, sP, grid):
             if f != 0 and grid(x0 + ((sx -1)/2), y0 + ((sy -1)/2)):
                 return False
             if dx == 0 and grid(x0, y0 + ((sy - 1)/2)) and grid(x0 - 1, y0 + ((sy - 1)/2)):
-
+                return False
+        y0 = y0 + sy
+    return true
 
 
 
