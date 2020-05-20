@@ -35,8 +35,7 @@ def manhattan(point,point2):
     """
     x,y = point.grid_point
     x2,y2 = point2.grid_point
-    return math.sqrt(pow((x2 - x),2) + pow((y2 - y), 2))
-
+    return abs(x - x2) + abs(y - y2)
 pp.register_heuristic('manhattan', manhattan)
 
 def naive(point, point2):
@@ -51,6 +50,19 @@ def euclidean(point, point2):
     """
         Function that performs euclidean heuristic.
     """
-    return 25
+    x,y = point.grid_point
+    x2,y2 = point2.grid_point
+    return math.sqrt(pow((x2 - x),2) + pow((y2 - y), 2))
 
 pp.register_heuristic('euclidean', euclidean)
+
+def octile(point, point2):
+    """
+        Function that performs euclidean heuristic.
+    """
+    x,y = point.grid_point
+    x2,y2 = point2.grid_point
+    return math.sqrt(pow((x2 - x),2) + pow((y2 - y), 2))
+
+pp.register_heuristic('octile', euclidean)
+
