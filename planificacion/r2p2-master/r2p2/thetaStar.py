@@ -97,17 +97,17 @@ def thetaStar(start, goal, grid, heur='naive'):
                 ###########################
                 if lineOfSight(current,node,grid):
                     #path 2
-                    new_g = current.parent.G + current.move_cost(node)
-                    if (current.parent.G + new_g) < node.G:
-                        node.G = current.parent.G + new_g
+                    new_g_parents = current.parent.G + current.parent.move_cost(node)
+                    if new_g_parents < node.G:
+                        node.G = new_g_parents
                         node.parent = current.parent
+                else:
+                    #path 1
+                    new_g = current.G + current.move_cost(node)
+                    if node.G > new_g:
+                        node.G = new_g
+                        node.parent = current
                 ###########################
-                #Check if we beat the G score 
-                new_g = current.G + current.move_cost(node)
-                if node.G > new_g:
-                    #If so, update the node to have a new parent
-                    node.G = new_g
-                    node.parent = current
             else:
                 #If it isn't in the open set, calculate the G and H score for the node
                 node.G = current.G + current.move_cost(node)
@@ -119,7 +119,7 @@ def thetaStar(start, goal, grid, heur='naive'):
     #Throw an exception if there is no path
     raise ValueError('No Path Found')
 
-pp.register_search_method('A*', aStar)
+pp.register_search_method('theta*', thetaStar)
 
 
 def lineOfSight(s, sP, grid):
@@ -228,12 +228,20 @@ def thetaStar_mesh(start, goal, grid, heur='naive'):
                 continue
             #Otherwise if it is already in the open set
             if node in openset:
-                #Check if we beat the G score 
-                new_g = current.G + current.move_cost(node)
-                if node.G > new_g:
-                    #If so, update the node to have a new parent
-                    node.G = new_g
-                    node.parent = current
+                 ###########################
+                if lineOfSight(current,node,grid):
+                    #path 2
+                    new_g_parents = current.parent.G + current.parent.move_cost(node)
+                    if new_g_parents < node.G:
+                        node.G = new_g_parents
+                        node.parent = current.parent
+                else:
+                    #path 1
+                    new_g = current.G + current.move_cost(node)
+                    if node.G > new_g:
+                        node.G = new_g
+                        node.parent = current
+                ###########################
             else:
                 #If it isn't in the open set, calculate the G and H score for the node
                 node.G = current.G + current.move_cost(node)
@@ -245,4 +253,4 @@ def thetaStar_mesh(start, goal, grid, heur='naive'):
     #Throw an exception if there is no path
     raise ValueError('No Path Found')
 
-pp.register_search_method('A* mesh', aStar_mesh)
+pp.register_search_method('theta* mesh', thetaStar_mesh)
