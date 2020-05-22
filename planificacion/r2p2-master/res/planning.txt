@@ -7,72 +7,21 @@ At all
 
 % 0.000: ( crash )
 
-% Let's see what happens
+% Empezaremos en el punto p0610, con orientacion p_45 y t_45
 
+(undock r)
 
+(move r p0610 p3010)
 
-(move r p0515 p3030)
+(tilt_rotate r t_45 t_0)
 
-10: (recharge_batteries )
+(pan_rotate r p_45 p_0)
 
-11: (recharge_batteries )
+(take_photo r p3010 p_0 t_0)
 
-12: (recharge_batteries )
+(move r p3010 p1532)
 
-11: (move r p3030 p2025)
+(take_photo r p1532 p_0 t_0)
 
-13: (take_picture )
+(trasmit_photo)
 
-14: (recharge_batteries )
-
-15: (recharge_batteries )
-
-17: (move r p2025 p1010)
-
-16: (take_picture )
-
-10: (recharge_batteries )
-
-11: (recharge_batteries )
-
-12: (recharge_batteries )
-
-13: (recharge_batteries )
-
-14: (recharge_batteries )
-
-15: (recharge_batteries )
-
-10: (recharge_batteries )
-
-11: (recharge_batteries )
-
-12: (recharge_batteries )
-
-13: (recharge_batteries )
-
-14: (recharge_batteries )
-
-15: (recharge_batteries )
-
-10: (recharge_batteries )
-
-11: (recharge_batteries )
-
-12: (recharge_batteries )
-
-13: (recharge_batteries )
-
-14: (recharge_batteries )
-
-15: (recharge_batteries )
-
-21: (move r p2020 p2530)
-
-22: (get_co2_reading )
-
-21: (move r p2530 p3010)
-
-23: (drill)
-
-22: (take_picture )
