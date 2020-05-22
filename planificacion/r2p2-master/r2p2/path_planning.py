@@ -269,7 +269,7 @@ def generate_waypoints_list_mesh(algo, start, finish, mesh, heur="naive"):
     print("Total nodes expanded: ", expanded_nodes)
     return waypoints
 
-def run_path_planning(grid_size, algo='A*', start=(1, 1), finish=(2,2), heur='naive', show_grid=True):
+def run_path_planning(grid_size, algo='A*', start=(1, 1), finish=(2,2), heur='manhattan', show_grid=True):
     """
         Configures and runs a given path planning algorithm over a grid.
         Inputs:
